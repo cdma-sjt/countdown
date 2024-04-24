@@ -12,13 +12,13 @@ p {
 </head>
 <body>
 
-<p id="Paper 1"></p>
-<p id="Paper 2"></p>
-<p id="Project"></p>
+<p id="paper1"></p>
+<p id="paper2"></p>
+<p id="project"></p>
 
 <script>
 // A script to help motivate my year 13 Computer Science students
-// Mr Brown wrote this
+// Mr Brown wrote this.
 
 // Set the dates for the exams
 var countDownDate1 = new Date("Jun 10, 2024 13:00:00").getTime();
@@ -26,40 +26,42 @@ var countDownDate2 = new Date("Jun 18, 2024 13:00:00").getTime();
 var countDownDate3 = new Date("Mar 22, 2024 23:59:59").getTime();
 
 // Set the timers
-var timer1= document.getElementById("Paper 1")
-var timer2= document.getElementById("Paper 2")
-var timer3= document.getElementById("Project")
+var timer1 = document.getElementById("paper1")
+var timer2 = document.getElementById("paper2")
+var timer3 = document.getElementById("project")
 
-function countdown(finish_date, timer, name){
+// function to dynamically set the countdown for each timer
+function countdown(finish_date, timer, title){
 
     var x = setInterval(function() {
 
                     var now = new Date().getTime();
 
                     var distance = finish_date - now;
-
+                    
+                    // interval calculations ...
                     var days = Math.floor(distance / (1000 * 60 * 60 * 24));
                     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
                     
+                    // default colour if countdown is positive value
                     var textcolour = "black";
+                    
+                    // change to red if negative
                     if (distance < 0) {
                     	// clearInterval(x);
                     	// document.getElementById("timer").innerHTML = "Countdown ended";
                         textcolour = "red";
                     }
 
-                    timer.innerHTML = name + "<br>" + "<span style='color:" + textcolour + "'> " + days + "d "  + hours + "h " + minutes + "m " + seconds + "s " + "</span>";
+					// display the timer
+                    timer.innerHTML = title + "<br>" + "<span style='color:" + textcolour + "; font-size:150%'>" + days + "d "  + hours + "h " + minutes + "m " + seconds + "s " + "</span>";
 
-
-                    if (distance < 0) {
-                    	// clearInterval(x);
-                    	// document.getElementById("timer").innerHTML = "Countdown ended";
-                    }
                     }, 1000);
 }
 
+// call the countdown function for each of the timers
 countdown(countDownDate1, timer1, "Paper 1")
 countdown(countDownDate2, timer2, "Paper 2")
 countdown(countDownDate3, timer3, "Project")
