@@ -12,37 +12,58 @@ p {
 </head>
 <body>
 
-<p id="demo"></p>
+<p id="Paper 1"></p>
+<p id="Paper 2"></p>
+<p id="Project"></p>
 
 <script>
-// Set the date we're counting down to
-var countDownDate = new Date("Jun 10, 2024 13:00:00").getTime();
+// A script to help motivate my year 13 Computer Science students
+// Mr Brown wrote this
 
-// Update the count down every 1 second
-var x = setInterval(function() {
+// Set the dates for the exams
+var countDownDate1 = new Date("Jun 10, 2024 13:00:00").getTime();
+var countDownDate2 = new Date("Jun 18, 2024 13:00:00").getTime();
+var countDownDate3 = new Date("Mar 22, 2024 23:59:59").getTime();
 
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
+// Set the timers
+var timer1= document.getElementById("Paper 1")
+var timer2= document.getElementById("Paper 2")
+var timer3= document.getElementById("Project")
+
+function countdown(finish_date, timer, name){
+
+    var x = setInterval(function() {
+
+                    var now = new Date().getTime();
+
+                    var distance = finish_date - now;
+
+                    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                    
+                    var textcolour = "black";
+                    if (distance < 0) {
+                    	// clearInterval(x);
+                    	// document.getElementById("timer").innerHTML = "Countdown ended";
+                        textcolour = "red";
+                    }
+
+                    timer.innerHTML = name + "<br>" + "<span style='color:" + textcolour + "'> " + days + "d "  + hours + "h " + minutes + "m " + seconds + "s " + "</span>";
+
+
+                    if (distance < 0) {
+                    	// clearInterval(x);
+                    	// document.getElementById("timer").innerHTML = "Countdown ended";
+                    }
+                    }, 1000);
+}
+
+countdown(countDownDate1, timer1, "Paper 1")
+countdown(countDownDate2, timer2, "Paper 2")
+countdown(countDownDate3, timer3, "Project")
+
 </script>
 
 </body>
